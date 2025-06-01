@@ -1,0 +1,19 @@
+@model ApplicationCore.Entities.Cast
+
+@{
+    ViewData["Title"] = "Cast Details";
+}
+
+<div class="container mt-4">
+    <h2>@Model.Name</h2>
+
+    <h4 class="mt-4">Movies</h4>
+    <ul class="list-group">
+        @foreach (var mc in Model.MovieCasts)
+        {
+            <li class="list-group-item">
+                <a href="/movies/details/@mc.Movie.Id">@mc.Movie.Title</a>
+            </li>
+        }
+    </ul>
+</div>
