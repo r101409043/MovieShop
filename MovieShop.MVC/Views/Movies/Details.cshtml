@@ -1,0 +1,111 @@
+@model ApplicationCore.Entities.Movie
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="container mt-4">
+
+    <div class="row">
+        <div class="col-md-3">
+            <img src="@Model.PosterUrl" class="img-fluid" alt="@Model.Title" />
+        </div>
+
+        <div class="col-md-6">
+            <h2>@Model.Title</h2>
+            <p>@Model.Overview</p>
+
+            <h5>Genres:</h5>
+            @foreach (var mg in Model.MovieGenres)
+            {
+                <span class="badge bg-primary me-1">@mg.Genre.Name</span>
+            }
+        </div>
+
+        <div class="col-md-3">
+            <button type="button" class="btn btn-success w-100 mb-2" data-bs-toggle="modal" data-bs-target="#buyModal">Buy Movie</button>
+            <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#reviewModal">Review</button>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-6">
+            <h4>Movie Facts</h4>
+            <ul class="list-group mb-3">
+                <li class="list-group-item">Price: $@Model.Price</li>
+                <li class="list-group-item">ID: @Model.Id</li>
+            </ul>
+
+            <h4>Trailers</h4>
+            <ul class="list-group">
+                @foreach (var t in Model.Trailers)
+                {
+                    <li class="list-group-item">
+                        <a href="@t.TrailerUrl" target="_blank">@t.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Cast</h4>
+            <ul class="list-group">
+                @foreach (var mc in Model.MovieCasts)
+                {
+                    <li class="list-group-item">
+                        <a href="/cast/details/@mc.Cast.Id">@mc.Cast.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="buyModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Buy Movie</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>Confirm to purchase <strong>@Model.Title</strong> for <strong>$@Model.Price</strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Purchase</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="reviewModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Write Review</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label">Rating</label>
+                        <select class="form-select">
+                            @for (var i = 1; i <= 10; i++)
+                            {
+                                var i1 = i;
+                                <option>@i1</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Review</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

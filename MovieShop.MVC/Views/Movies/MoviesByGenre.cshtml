@@ -1,0 +1,34 @@
+@model ApplicationCore.Models.PaginatedResultSet<ApplicationCore.Entities.Movie>
+@{
+    ViewData["Title"] = "Movies By Genre";
+}
+<div class="container mt-4">
+    <h2 class="mb-4">Movies By Genre</h2>
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+        @if (Model.Items != null)
+        {
+            foreach (var movie in Model.Items)
+            {
+                @await Html.PartialAsync("_MovieCard", new ApplicationCore.Models.MovieCardModel
+                {
+                    Id = movie.Id,
+                    Title = movie.Title,
+                    PosterUrl = movie.PosterUrl
+                })
+            }
+        }
+    </div>
+    <nav class="mt-4">
+        <ul class="pagination justify-content-center">
+            @for (var i = 1; i <= Model.TotalPages; i++)
+            {
+                <li class="page-item @(i == Model.PageNumber ? "active" : "")">
+                    <a class="page-link"
+                       href="@Url.Action("MoviesByGenre", "Movies", new { id = ViewContext.RouteData.Values["id"], pageNumber = i, pageSize = Model.PageSize })">
+                        @i
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

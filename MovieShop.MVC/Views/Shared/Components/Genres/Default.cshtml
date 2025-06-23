@@ -1,0 +1,9 @@
+@model IEnumerable<ApplicationCore.Entities.Genre>
+
+<select class="form-select w-auto" id="genreDropdown" onchange="if(this.value) window.location.href=this.value;">
+    <option selected disabled>Choose Genre</option>
+    @foreach (var genre in Model)
+    {
+        <option value="/movies/moviesbygenre/@genre.Id">@genre.Name</option>
+    }
+</select>

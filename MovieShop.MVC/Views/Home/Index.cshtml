@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ApplicationCore.Models.MovieCardModel>
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Top Revenue Movies</h2>
+
+<div class="row">
+    @foreach (var movie in Model)
+    {
+        @await Html.PartialAsync("_MovieCard", movie)
+    }
+</div>
