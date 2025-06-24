@@ -103,3 +103,5 @@ C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\System.Text
 C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\obj\Debug\net8.0\MovieShop.MVC.sourcelink.json
+C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\Logs\log20250623.json
+C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\Logs\log20250624.json
