@@ -5,7 +5,6 @@
 }
 
 <div class="container mt-4">
-
     <div class="row">
         <div class="col-md-3">
             <img src="@Model.PosterUrl" class="img-fluid" alt="@Model.Title" />
@@ -64,16 +63,18 @@
 <div class="modal fade" id="buyModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Buy Movie</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <p>Confirm to purchase <strong>@Model.Title</strong> for <strong>$@Model.Price</strong>?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary">Purchase</button>
-            </div>
+            <form asp-controller="Order" asp-action="Create" asp-route-movieId="@Model.Id" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title">Buy Movie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Confirm to purchase <strong>@Model.Title</strong> for <strong>$@Model.Price</strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Purchase</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

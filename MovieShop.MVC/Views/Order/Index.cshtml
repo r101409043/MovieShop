@@ -1,0 +1,52 @@
+@model IEnumerable<ApplicationCore.Entities.Order>
+
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h2 class="mb-4">My Orders</h2>
+
+@foreach (var order in Model)
+{
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            Order #@order.Id - @order.OrderDateTime.ToString("yyyy-MM-dd HH:mm") - Total: $@order.TotalPrice
+        </div>
+        <div class="card-body">
+            @if (order.OrderItems.Any())
+            {
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Movie</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <tr>
+                            <td>@item.Movie?.Title</td>
+                            <td>$@item.UnitPrice</td>
+                            <td>@item.Quantity</td>
+                            <td>$@(item.UnitPrice * item.Quantity)</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>No items in this order.</p>
+            }
+
+            <form method="post" asp-controller="Order" asp-action="Delete" asp-route-id="@order.Id" class="mt-2" style="display:inline-block;">
+                <button type="submit" class="btn btn-sm btn-danger">Delete Order</button>
+            </form>
+
+            <a asp-controller="Order" asp-action="Edit" asp-route-id="@order.Id" class="btn btn-sm btn-outline-primary ms-2">Edit</a>
+        </div>
+    </div>
+}

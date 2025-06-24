@@ -23,7 +23,8 @@ public class MovieService(IMovieRepository movieRepository) : IMovieService
 
     public async Task<Movie?> GetMovieDetails(int id)
     {
-        return await movieRepository.GetMovieById(id);
+        var movie = await movieRepository.GetMovieById(id);
+        return movie;
     }
 
     public async Task<IEnumerable<Movie>> GetMoviesByGenre(int genreId, int pageNumber, int pageSize)

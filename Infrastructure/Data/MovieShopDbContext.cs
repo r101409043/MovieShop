@@ -1,5 +1,5 @@
-using Microsoft.EntityFrameworkCore;
 using ApplicationCore.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
 
@@ -12,6 +12,8 @@ public class MovieShopDbContext(DbContextOptions<MovieShopDbContext> options) : 
     public DbSet<User> Users { get; set; }
     public DbSet<Cast> Casts { get; set; }
     public DbSet<MovieCast> MovieCasts { get; set; }
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderItem> OrderItems { get; set; }
 
     override protected void OnModelCreating(ModelBuilder modelBuilder)
     {

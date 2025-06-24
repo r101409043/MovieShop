@@ -105,3 +105,4 @@ C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\runtimes\br
 C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\obj\Debug\net8.0\MovieShop.MVC.sourcelink.json
 C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\Logs\log20250623.json
 C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\Logs\log20250624.json
+C:\Users\Chen\RiderProjects\MovieShop\MovieShop.MVC\bin\Debug\net8.0\Logs\log20250624_001.json

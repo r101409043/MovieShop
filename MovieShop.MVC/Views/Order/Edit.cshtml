@@ -1,0 +1,21 @@
+@model ApplicationCore.Entities.Order
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<h2>Edit Order #@Model.Id</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="mb-3">
+        <label class="form-label">Total Price</label>
+        <input asp-for="TotalPrice" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Order Date</label>
+        <input asp-for="OrderDateTime" type="datetime-local" class="form-control" value="@Model.OrderDateTime.ToString("yyyy-MM-ddTHH:mm")" />
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+    <a asp-action="Index" class="btn btn-secondary ms-2">Cancel</a>
+</form>
